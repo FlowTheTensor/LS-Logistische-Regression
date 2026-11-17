@@ -8,8 +8,8 @@ function erstelleUi() {
   erstelleHuelle();
   erstelleBeispielReiter(szenarioWechseln);
 
-  ui.neueDaten = knopf(1270, 12, 150, "Neue Messdaten", neueMessdaten, "kopf");
-  ui.csv = knopf(1428, 12, 148, "CSV speichern", csvSpeichern, "kopf");
+  ui.neueDaten = knopf(1230, 12, 150, "Neue Messdaten", neueMessdaten, "kopf");
+  ui.csv = knopf(1388, 12, 148, "CSV speichern", csvSpeichern, "kopf");
 
   // --- unter dem Diagramm ----------------------------------------------------
   ui.abstaende = knopf(40, 830, 230, "Fehler je Punkt zeigen", () => {

@@ -109,6 +109,7 @@ Die **ROC-Kurve** trägt die Sensitivität gegen die Falsch-Positiv-Rate (1 − 
 | Klick ins Diagramm | Prognose für diesen x-Wert (ziehbar), **Esc** blendet sie aus |
 | Maus über einem Punkt | Messwert, p(x) und Fehler dieses Punkts |
 | Maus auf ein Feld der Konfusionsmatrix | die zugehörigen Punkte leuchten auf |
+| Mond / Sonne oben rechts | dunkles oder helles Farbschema; die Wahl wird im Browser gespeichert und gilt für alle Lernsituationen |
 
 **Einstellungen:** Verfahren, Lernrate η, Tempo, Schwellwert (0,05 … 0,95), „Beste Kurve zum Vergleich“ (beim Skript-Beispiel: die Kurve aus dem Skript). Unter dem Diagramm lassen sich der Fehler je Punkt und die Fehlklassifikationen einblenden. „Neue Messdaten“ erzeugt einen neuen Datensatz mit denselben Verteilungen (nicht beim Skript-Beispiel), „CSV speichern“ lädt die Daten herunter (z. B. für Excel oder Python).
 
@@ -137,6 +138,7 @@ Die **ROC-Kurve** trägt die Sensitivität gegen die Falsch-Positiv-Rate (1 − 
 | `ui.js` | Knöpfe, Auswahllisten, Regler |
 | `sketch.js` | Ablauf, Zeichnen, Erklärtexte |
 | `assets/logo-jps.png` | Logo der Jakob-Preh-Schule |
+| `assets/logo-jps-hell.png` | Logo in Weiß für das dunkle Farbschema |
 | `libraries/p5.min.js` | p5.js (lokal, damit die Seite auch offline läuft) |
 
 Ein weiteres Beispiel lässt sich ergänzen, indem man in `daten.js` einen Eintrag in `SZENARIEN` hinzufügt (ein Merkmal, zwei Klassen mit Mittelwert, Streuung und Anzahl – oder feste Daten unter `fest` –, Wörter für die Texte). Es erscheint dann automatisch als weiterer Reiter in der Beispiel-Leiste.
@@ -153,6 +155,7 @@ Am einfachsten in VS Code mit der Erweiterung **Live Server**: Rechtsklick auf `
 - Fehler in `draw()` werden abgefangen und als Hinweis angezeigt, statt das Programm einzufrieren.
 - Jeder Datensatz wird mit festem Startwert erzeugt und ist deshalb bei jedem Start gleich. Erst „Neue Messdaten“ würfelt neu.
 - `basis.js` ist in allen KI-Klassifikations-Seiten (Logistische Regression, kNN, Naiver Bayes, Entscheidungsbaum) identisch.
+- **Farbschema hell/dunkel:** Alle Farben stehen in zwei Paletten (`FARBE_HELL`, `FARBE_DUNKEL`); `FARBE` enthält die aktive Palette und wird beim Umschalten in place überschrieben. Die CSS-Variablen in `style.css` wechseln über die Klasse `dunkelmodus` am `<html>`-Element. Die Wahl steht im `localStorage` unter `jps-lernsituationen-farbschema` (ohne Speicher gilt die Systemeinstellung). Im dunklen Schema zeigt die Kopfzeile `assets/logo-jps-hell.png`.
 
 ## Lizenz
 
@@ -174,5 +177,5 @@ Vorschlag für die Namensnennung: *„KI-Klassifikation · Logistische Regressio
 |---|---|
 | `libraries/p5.min.js` | [p5.js](https://p5js.org), GNU LGPL 2.1 |
 | `libraries/p5.sound.min.js` | [p5.sound](https://p5js.org/reference/p5.sound/), GNU LGPL 2.1 |
-| `assets/logo-jps.png` | Logo der Jakob-Preh-Schule – alle Rechte bei der Schule |
+| `assets/logo-jps.png`, `assets/logo-jps-hell.png` | Logo der Jakob-Preh-Schule – alle Rechte bei der Schule |
 | Schriften Quicksand, Inter, JetBrains Mono | über Google Fonts eingebunden, SIL Open Font License 1.1 |

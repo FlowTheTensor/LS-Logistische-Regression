@@ -430,7 +430,7 @@ function zeichneKurve(m, farbe, dicke, strich) {
 
 function zeichneKlassenPunkt(px, py, klasse, gross) {
   const f = KLASSEN_FARBE[klasse];
-  stroke(255);
+  stroke(...FARBE.flaeche);
   strokeWeight(1.4);
   fill(f[0], f[1], f[2], 235);
   const r = gross ? 1.25 : 1;
@@ -479,13 +479,13 @@ function zeichneDatenPanel() {
   for (let i = 0; i <= anzX; i++) {
     const v = mm.min + i * mm.gitter;
     const [gx] = zuPlot(v, 0);
-    stroke(0, 0, 0, 22);
+    stroke(...FARBE.text, 22);
     strokeWeight(1);
     line(gx, PLOT.y, gx, PLOT.y + PLOT.h);
   }
   for (let i = 0; i <= 10; i++) {
     const [, gy] = zuPlot(mm.min, i / 10);
-    stroke(0, 0, 0, i === 0 || i === 10 ? 45 : 18);
+    stroke(...FARBE.text, i === 0 || i === 10 ? 45 : 18);
     line(PLOT.x, gy, PLOT.x + PLOT.w, gy);
   }
 
@@ -558,9 +558,9 @@ function zeichneDatenPanel() {
       for (let i = 0; i < 2; i++) {
         const [px, py] = zuPlot(g[i].x, g[i].p);
         noStroke();
-        fill(29, 29, 28, 40);
+        fill(...FARBE.schatten, 40);
         circle(px + 1, py + 2, 28);
-        fill(255);
+        fill(...FARBE.flaeche);
         stroke(...FARBE.gruen);
         strokeWeight(i === aktiv ? 4.5 : 3.5);
         if (i === 0) {
@@ -582,7 +582,7 @@ function zeichneDatenPanel() {
     } else {
       const [wx, wy] = zuPlot(m.x0, 0.5);
       noStroke();
-      fill(255);
+      fill(...FARBE.flaeche);
       stroke(...FARBE.gruen);
       strokeWeight(3);
       circle(wx, wy, 14);
@@ -606,7 +606,7 @@ function zeichneDatenPanel() {
       line(px, PLOT.y + PLOT.h, px, py);
       line(PLOT.x, py, px, py);
       gestrichelt(false);
-      stroke(255);
+      stroke(...FARBE.flaeche);
       strokeWeight(2);
       fill(...FARBE.text);
       zeichneStern(px, py, 13);
@@ -1024,7 +1024,7 @@ function zeichneKonfusion() {
     const y = KONF.y + ze * KONF.zh;
     stroke(...(hover === id ? FARBE.senf : FARBE.linie));
     strokeWeight(hover === id ? 2.5 : 1);
-    fill(...(richtig ? [228, 241, 233] : [251, 225, 230]));
+    fill(...(richtig ? FARBE.gruenFlaeche : FARBE.rotFlaeche));
     rect(x, y, KONF.zw, KONF.zh);
     noStroke();
     fill(...(richtig ? FARBE.gruen : FARBE.akzent));
@@ -1130,7 +1130,7 @@ function zeichneRoc() {
   endShape();
 
   // aktueller Schwellwert
-  stroke(255);
+  stroke(...FARBE.flaeche);
   strokeWeight(1.5);
   fill(...FARBE.senf);
   circle(sx(r.fpr), sy(r.sens), 11);
